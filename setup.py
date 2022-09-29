@@ -33,5 +33,6 @@ setuptools.setup(
                       'sphinx_rtd_theme',
                       'sphinxcontrib.bibtex',
                       'nbsphinx',
-                      'wget'],
+                      'wget',
+                      'pandoc'],
 )
