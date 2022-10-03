@@ -2,14 +2,10 @@
 ReVel
 +++++
 
-This is the main module for evaluation of LLEs. It provides the following metrics
+This is the main module for evaluation of LLEs.
 
 .. autosummary::
-    ReVel.revel.local_concordance
-    ReVel.revel.local_fidelity
-    ReVel.revel.prescriptivity
-    ReVel.revel.conciseness
-    ReVel.revel.robustness
+    ReVel.revel.ReVel
 '''
 from .revel import ReVel
 

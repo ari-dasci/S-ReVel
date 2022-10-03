@@ -9,7 +9,21 @@ from ReVel.LLEs import LLE
 
 class ReVel:
     '''
-        Base module for the ReVel framework. It accepts
+        Base module for the ReVel framework.
+        
+        The framework is composed of five different metrics and some auxiliary functions, such as the
+        derivation of the softmax function and the visualization of the results.
+        
+        The metrics are:
+        
+        .. autosummary::
+            ReVel.revel.ReVel.local_concordance
+            ReVel.revel.ReVel.local_fidelity
+            ReVel.revel.ReVel.prescriptivity
+            ReVel.revel.ReVel.conciseness
+            ReVel.revel.ReVel.robustness
+        
+        This module has the following parameters:
         
         Parameters
         ----------
@@ -53,7 +67,7 @@ class ReVel:
         '''
         return self.LLE(model_forward=self.model_f,instance=self.instance)
     
-    def softmax_derivative(self,lle_representation)->np.ndarray:
+    def softmax_derivative(self,lle_representation:LinearRegression)->np.ndarray:
         '''
         Calculate the derivative of the softmax function with respect to the logits. To calculate
         this derivative, we use the chain rule. Let :math:`L(f) = Af+x` be the LLE model and
@@ -91,7 +105,7 @@ class ReVel:
 
         return derivative
     
-    def importance_matrix(self,lle_representation)->np.ndarray:
+    def importance_matrix(self,lle_representation:LinearRegression)->np.ndarray:
         '''
         Computation of the importance matrix :math:`\mathcal{A}` of the LLE model.
         It is a matrix of dimensions FxC where :math:`a_{i,j}` is the importance of the feature i to the class j.
@@ -120,7 +134,7 @@ class ReVel:
         importance = np.sign(importance_log)*np.sqrt(np.abs(importance_log)*np.abs(importance_prob))
 
         return importance
-    def feature_importance(self,lle_representation,order=2)->np.ndarray:
+    def feature_importance(self,lle_representation:LinearRegression,order=2)->np.ndarray:
         '''
         Calculate the feature importance of the LLE model. For each features, the importance 
         is the norm of the vector of the importance matrix of this specific feature.
@@ -143,7 +157,7 @@ class ReVel:
         features = np.swapaxes(importance,0,1)
         return features
         
-    def local_concordance(self,lle_representation,order=1)->np.ndarray:
+    def local_concordance(self,lle_representation:LinearRegression,order=1)->np.ndarray:
         '''
         Calculate the local concordance of the LLE model. 
         The local concordance is calculated as the distance between the output predicted
@@ -181,7 +195,7 @@ class ReVel:
         max_dist = np.linalg.norm(a-b,ord=order)
         return 1-(dist/max_dist)
 
-    def local_fidelity(self,neighbourhood,lle_representation,order = 2) ->np.ndarray:
+    def local_fidelity(self,neighbourhood,lle_representation:LinearRegression,order = 2) ->np.ndarray:
         
         '''
         Calculate the local fidelity of the LLE model. It is calculated as the distance between 
@@ -217,7 +231,7 @@ class ReVel:
         return np.mean([1-dist/max_dist for dist in distances])
     
     
-    def prescriptivity(self,lle_representation,order=2)->np.ndarray:
+    def prescriptivity(self,lle_representation:LinearRegression,order=2)->np.ndarray:
         
         '''
         Calculate the prescriptivity of the LLE model. It is calculated as the distance between
@@ -273,9 +287,11 @@ class ReVel:
         max_distance =  np.linalg.norm(a-b,ord=order)
         return 1-distance/max_distance
     
-    def conciseness(self,lle_representation,order=2)->np.ndarray:
+    def conciseness(self,lle_representation:LinearRegression,order=2)->np.ndarray:
         '''
-        Calculate the conciseness of the LLE model. Let :math:`\mathcal{A}` be the importance matrix with dimensions FxC.
+        Calculate the conciseness of the LLE model. 
+        
+        Let :math:`\mathcal{A}` be the importance matrix with dimensions FxC.
         We define the feature importance of feature :math:`i` as the norm of the vector :math:`\mathcal{A}_{i}`, that is,
         :math:`I_i = \|\mathcal{A}_{i}\|_{order}`. We normalize those norms by the maximum norm :math:`I_i`,that is,
         :math:`I_{i}^{norm} = \dfrac{I_i}{I_{max}}`. Then, the conciseness is calculated as
@@ -342,7 +358,7 @@ class ReVel:
         ejemplos = [d(weights[i],weights[j])  for i in range(len(weights)) for j in range(i,len(weights))]
         return np.mean(ejemplos)
     
-    def importance_mask(self, lle_representation,segments,id_class)->   np.ndarray:
+    def importance_mask(self, lle_representation:LinearRegression,segments,id_class)->   np.ndarray:
         '''
         Calculate the importance mask of the LLE model to a certain class over the segments. 
         That is, we build a mask with the same shape as segments where each element is the importance of
@@ -377,7 +393,7 @@ class ReVel:
             mask = np.where(segments==f,val,mask)
         
         return mask
-    def coloured_importance_mask(self, lle_representation,segments,id_class)->   np.ndarray:
+    def coloured_importance_mask(self, lle_representation:LinearRegression,segments,id_class)->   np.ndarray:
         '''
         Transforms the importance mask of the LLE model to a certain class over the segments to a coloured mask.
         The colours are from the cmap "RdYlGn", where red is assigned to the importance of the feature with the highest 
