@@ -130,3 +130,5 @@ dmypy.json
 
 *.pt
 data/*
+docs/data/*
+docs/source/notebooks/data/*
