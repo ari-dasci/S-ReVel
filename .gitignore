@@ -132,3 +132,4 @@ dmypy.json
 data/*
 docs/data/*
 docs/source/notebooks/data/*
+*.csv
