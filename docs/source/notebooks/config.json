@@ -1,0 +1,10 @@
+{   "features_W":6,
+    "evaluations_W":50,
+    "xai_model_W":"LIME",
+    "dataset_W":"CIFAR10",
+    "perturbation_W":"square",
+    "sigma_W":4,
+    "kernel_W":150.0,
+    "maxDist_W":20,
+    "ratio_W":0.5
+}
