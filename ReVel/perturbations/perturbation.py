@@ -71,6 +71,26 @@ class Perturbation:
         
         return np.where(condition,neutral,img )
 
+    def transform(self,img):
+        '''
+        This function is used to transform the input image to the input space.
+        
+        Parameters
+        ----------
+        img:    
+            original image. Dims (H,W,C)
+        Returns
+        -------
+        Image preprocessed. Dims (H,W,C)
+        '''
+        
+        segments = self.segmentation_fn(img)
+        
+        neutral = self.fn_neutral_image(np.array(img))
+        
+        perturbation = self.perturbation(img,neutral,segments,-1)
+        return self.after_transform(perturbation)
+    
     def target_transform(self,target:int):
         '''
         This function is used to transform the target to the target space.
