@@ -27,11 +27,14 @@ class Perturbation:
             segmentation_fn,
             fn_neutral_image,
             num_classes:int,
-            **kwargs):
+            get_input_transform,
+            final_size,**kwargs):
         
         self.segmentation_fn = segmentation_fn
         self.fn_neutral_image = fn_neutral_image
+        self.after_transform = get_input_transform(final_size)
         self.num_classes = num_classes
+        self.final_size = final_size
 
     def perturbation(self,img,neutral,segments,indexes):
         '''
