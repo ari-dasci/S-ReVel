@@ -1,6 +1,6 @@
 from typing import Tuple
-from ELBAF.perturbations.perturbation import Perturbation
-from ELBAF.perturbations.utils import get_input_transform
+from .perturbation import Perturbation
+from .utils import get_input_transform
 import numpy as np
 import torch
 
