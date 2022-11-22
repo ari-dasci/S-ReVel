@@ -2,6 +2,7 @@ import argparse
 from cProfile import label
 import torch
 from ReVel.load_data import load_data
+from ReVel.perturbations import get_perturbation
 torch.set_num_threads(3)
 import torch.nn as nn
 import torch.nn.functional as F
@@ -12,7 +13,7 @@ import torch.optim as optim
 import tqdm
 from efficientnet_pytorch import EfficientNet
 
-
+n_classes = {'CIFAR10':10,   'CIFAR100':100, 'EMNIST':47,'FashionMNIST':10}
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='')
     parser.add_argument('--dataset', metavar='D', type=str,default="CIFAR10",
@@ -28,9 +29,10 @@ if __name__ == '__main__':
 
     device = "cuda" if torch.cuda.is_available() else "cpu" 
 
-    Test   = load_data(args.dataset,train=False)
+    perturbation = get_perturbation("square",dim=4,num_classes=n_classes[args.dataset],final_size=(224,224))
+    Test   = load_data(args.dataset,perturbation=perturbation,train=False)
     
-    num_classes = len(Test.dataset.classes) 
+    num_classes = n_classes[args.dataset]
 
     classifier = EfficientNet.from_name('efficientnet-b2',num_classes=num_classes)
     state_dict = torch.load(f"./models/classifier_{args.dataset}.pt")
