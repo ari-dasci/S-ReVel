@@ -81,11 +81,14 @@ class Perturbation:
         Parameters
         ----------
         img:    
-            original image. Dims (H,W,C)
+            original image. Dims (H,W,C) or (H,W)
         Returns
         -------
         Image preprocessed. Dims (H,W,C)
         '''
+        if len(np.array(img).shape) == 2:
+            img = np.expand_dims(img,-1)
+            img = np.repeat(img,3,axis=-1)
         
         segments = self.segmentation_fn(img)
         
