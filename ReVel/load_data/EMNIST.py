@@ -9,7 +9,7 @@ def get_EMNIST_data(perturbation, train=True, dir="./data"):
         root += "test"
     Dataset = torchvision.datasets.EMNIST(root=root,
         download=True,
-        train=False,
+        train=train,
         transform=testIMG,
         target_transform=testTarget,
         split="balanced")

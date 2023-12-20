@@ -9,7 +9,7 @@ def get_CIFAR100_data(perturbation, train=True, dir="./data"):
         root += "test"
     Dataset = torchvision.datasets.CIFAR100(root=root,
         download=True,
-        train=False,
+        train=train,
         transform=testIMG,
         target_transform=testTarget)
     return Dataset
