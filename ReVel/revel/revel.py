@@ -231,8 +231,8 @@ class ReVel:
         return np.mean([1-dist/max_dist for dist in distances])
     
     
-    def prescriptivity(self,lle_representation:LinearRegression,order=2)->np.ndarray:
-        
+    def prescriptivity(self,lle_representation:LinearRegression,order=2) -> np.ndarray:
+
         '''
         Calculate the prescriptivity of the LLE model. It is calculated as the distance between
         the output predicted by the black-box model and the output predicted by the LLE model
@@ -267,7 +267,7 @@ class ReVel:
             Prescriptivity of the LLE model.
         '''
         importance = self.importance_matrix(lle_representation=lle_representation)
-        X = np.array([1 for i in range(importance.shape[1])])
+        X = np.array([1 for _ in range(importance.shape[1])])
         prediction = self.model_g(X).cpu().detach().numpy()[0]
         clase = np.argmax(prediction)
         importance = importance[clase]
@@ -282,7 +282,7 @@ class ReVel:
         v = scipy.special.softmax(lle_representation.predict(np.array([X])))
         a = np.array([1 if i == 0 else 0 for i in range(len(X))])
         b = np.array([1 if i == 1 else 0 for i in range(len(X))])
-        
+
         distance = np.linalg.norm(u-v,ord=order)
         max_distance =  np.linalg.norm(a-b,ord=order)
         return 1-distance/max_distance

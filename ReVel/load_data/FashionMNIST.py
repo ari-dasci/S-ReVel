@@ -9,7 +9,7 @@ def get_FashionMNIST_data(perturbation, train=True, dir="./data"):
         root += "test"
     Dataset = torchvision.datasets.FashionMNIST(root=root,
         download=True,
-        train=False,
+        train=train,
         transform=testIMG,
         target_transform=testTarget)
     return Dataset

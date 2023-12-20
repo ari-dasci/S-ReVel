@@ -11,7 +11,7 @@ def get_CIFAR10_data(perturbation, train=True, dir=None):
         root += "test"
     Dataset = torchvision.datasets.CIFAR10(root=root,
         download=True,
-        train=False,
+        train=train,
         transform=testIMG,
         target_transform=testTarget)
     return Dataset
