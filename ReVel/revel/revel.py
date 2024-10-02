@@ -383,7 +383,7 @@ class ReVel:
         '''
         imp_matrix = self.importance_matrix(lle_representation=lle_representation)
         max_abs = np.max(np.abs(imp_matrix))
-        imp_matrix = imp_matrix/max_abs
+        imp_matrix = imp_matrix/(max_abs+1e-9)
         imp_matrix = (imp_matrix+1)/2 # C*F
         
         
