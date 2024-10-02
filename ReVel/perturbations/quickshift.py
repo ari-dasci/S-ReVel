@@ -19,7 +19,7 @@ class QuickshiftPerturbation(Perturbation):
     ratio: float
         ratio of the segmentation
     '''
-    def __init__(self,kernel_size:float=5,max_dist:float=5.0,ratio:float=0.5,**kwargs):
+    def __init__(self,kernel_size:float=4,max_dist:float=200.0,ratio:float=0.2,**kwargs):
         self.kernel_size = kernel_size
         self.max_dist = max_dist
         self.ratio = ratio
