@@ -1,7 +1,7 @@
 Examples
 ========
 
-Here we provide a few examples of how to use the ELBAF library.
+Here we provide a few examples of how to use the ReVel library.
 
 .. toctree::
    :maxdepth: 1
