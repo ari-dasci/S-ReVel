@@ -44,7 +44,7 @@ class LIME(LLE):
         
         return lista
     def kernel(self, V)->np.ndarray:
-        '''
+        r'''
         Kernel function for the LIME regressor. It is calculated by the following formula
         
         :math:`K(V) = e^{-\dfrac{||1_{N}-V||^2}{ \sigma^2} }`

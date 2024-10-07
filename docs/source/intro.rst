@@ -20,7 +20,7 @@ After that, we can install the library using the following commands
 
 .. code-block:: bash
 
-   git clone https://github.com/isega24/ReVel.git
+   git clone https://github.com/ari-dasci/ReVel.git
    cd ./ReVel
    pip install .
 

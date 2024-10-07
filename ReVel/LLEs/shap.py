@@ -62,7 +62,7 @@ class SHAP(LLE):
         return lista
     
     def kernel(self, V,n_features:int)->np.ndarray:
-        '''
+        r'''
         The kernel function is used to weight the examples. For each example V,
         the asociated weight is computed as
         
