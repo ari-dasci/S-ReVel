@@ -24,6 +24,12 @@ After that, we can install the library using the following commands
    cd ./ReVel
    pip install .
 
+Or you can also install it using the following command
+
+.. code-block:: bash
+
+   pip install revel-xai
+
 First example
 -------------
 
@@ -31,6 +37,24 @@ After downloading the library, we can start using it. For example, on `the follo
 jupyter notebook`_ we generate a LLE for an image of the imagenet dataset and evaluate it.
 
 .. _the following jupyter notebook: notebooks/fisrt-steps.ipynb
+
+Citation
+--------
+
+If you use this library in your research, please cite the following paper:
+
+.. code-block:: bibtex
+   
+   @article{sevillano2023revel,
+   title={REVEL Framework to Measure Local Linear Explanations for Black-Box Models: Deep Learning Image Classification Case Study},
+   author={Sevillano-Garc{\'\i}a, Iv{\'a}n and Luengo, Juli{\'a}n and Herrera, Francisco},
+   journal={International Journal of Intelligent Systems},
+   volume={2023},
+   number={1},
+   pages={8068569},
+   year={2023},
+   publisher={Wiley Online Library}
+   }
 
 
 

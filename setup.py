@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setuptools.setup(
     name="ReVel-xai",
-    version="1.0.1",
+    version="1.0.2",
     author="Iván Sevillano Garcia",
     author_email="isevillano@ugr.es",
     description="Robust Evaluation VEctorized Local-linear-explanation",
