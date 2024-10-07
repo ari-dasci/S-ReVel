@@ -5,10 +5,10 @@ import matplotlib.cm as cm
 import pandas as pd
 from sklearn.linear_model import LinearRegression
 
-from ReVel.LLEs import LLE
+from ..LLEs import LLE
 
 class ReVel:
-    '''
+    r'''
         Base module for the ReVel framework.
         
         The framework is composed of five different metrics and some auxiliary functions, such as the
@@ -106,7 +106,7 @@ class ReVel:
         return derivative
     
     def importance_matrix(self,lle_representation:LinearRegression)->np.ndarray:
-        '''
+        r'''
         Computation of the importance matrix :math:`\mathcal{A}` of the LLE model.
         It is a matrix of dimensions FxC where :math:`a_{i,j}` is the importance of the feature i to the class j.
         
@@ -158,7 +158,7 @@ class ReVel:
         return features
         
     def local_concordance(self,lle_representation:LinearRegression,order=1)->np.ndarray:
-        '''
+        r'''
         Calculate the local concordance of the LLE model. 
         The local concordance is calculated as the distance between the output predicted
         by the black-box model and the output predicted by the LLE model on the instance itself.
@@ -228,7 +228,7 @@ class ReVel:
         a = np.array([1 if i == 0 else 0 for i in range(len(BB))])
         b = np.array([1 if i == 1 else 0 for i in range(len(BB))])
         max_dist = np.linalg.norm(a-b,ord=order)
-        return np.mean([1-dist/max_dist for dist in distances])
+        return np.mean([1-(dist/max_dist) for dist in distances])
     
     
     def prescriptivity(self,lle_representation:LinearRegression,order=2) -> np.ndarray:
@@ -285,10 +285,10 @@ class ReVel:
 
         distance = np.linalg.norm(u-v,ord=order)
         max_distance =  np.linalg.norm(a-b,ord=order)
-        return 1-distance/max_distance
+        return 1-(distance/max_distance)
     
     def conciseness(self,lle_representation:LinearRegression,order=2)->np.ndarray:
-        '''
+        r'''
         Calculate the conciseness of the LLE model. 
         
         Let :math:`\mathcal{A}` be the importance matrix with dimensions FxC.
@@ -323,7 +323,7 @@ class ReVel:
         return (len(features)-sum_normas)/(len(features)-1)
     
     def robustness(self,lles)-> np.ndarray:
-        '''
+        r'''
         Calculate the robustness of the LLE model. Let :math:`\mathcal{A}_i` be the importance matrix with dimensions FxC
         of the :math:`i`-th explanation given on *lles*. For two different explanations :math:`\mathcal{A}_i` and :math:`\mathcal{A}_j`,
         we define the similarity between the explanations as a combination of two similarities. The first similarity is the
@@ -383,7 +383,7 @@ class ReVel:
         '''
         imp_matrix = self.importance_matrix(lle_representation=lle_representation)
         max_abs = np.max(np.abs(imp_matrix))
-        imp_matrix = imp_matrix/(max_abs+1e-9)
+        imp_matrix = imp_matrix/max_abs if max_abs != 0 else 0
         imp_matrix = (imp_matrix+1)/2 # C*F
         
         

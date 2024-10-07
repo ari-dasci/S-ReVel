@@ -1,0 +1,48 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "revel-xai"
+version = "1.0.1"
+authors = [
+  { name="Ivan Sevillano Garcia", email="isevillano@go.ugr.es" },
+]
+description = "A Python package for the REVEL framework"
+readme = "README.md"
+requires-python = ">=3.8"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
+    "Operating System :: OS Independent",
+]
+dependencies = [
+        "torch",
+        "torchsummary",
+        "scikit-learn",
+        "scikit-image",
+        "matplotlib",
+        "numpy",
+        "scipy",
+        "pandas",
+        "torchvision",
+        "efficientnet_pytorch",
+        "tqdm",
+        "opencv-python",
+        "IPython",
+        "seaborn",
+        "plotly",
+        "docutils>=0.18.1,<0.21",
+        "ipywidgets",
+        "sphinx",
+        "sphinx_rtd_theme",
+        "sphinxcontrib.bibtex",
+        "nbsphinx",
+        "wget",
+        "pandoc",
+        "kaleido",
+    ]
+
+[project.urls]
+Homepage = "https://github.com/ari-dasci/revel"
+Issues = "https://github.com/ari-dasci/revel/issues"
