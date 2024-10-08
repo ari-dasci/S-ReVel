@@ -32,6 +32,7 @@ extensions = ['sphinx.ext.autodoc',
               'sphinx.ext.autosummary',
               'sphinxcontrib.bibtex',
               'sphinx.ext.napoleon',
+              'sphinx.ext.viewcode',
               'nbsphinx',
              'sphinx_rtd_theme']
 bibtex_bibfiles = ['refs.bib']
