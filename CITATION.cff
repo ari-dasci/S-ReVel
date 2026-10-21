@@ -1,0 +1,39 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite the article below."
+title: "ReVel"
+abstract: "Framework to measure local linear explanations of black-box models with five metrics: local concordance, local fidelity, prescriptivity, conciseness and robustness."
+type: software
+license: AGPL-3.0
+repository-code: "https://github.com/ari-dasci/S-ReVel"
+keywords:
+  - explainable artificial intelligence
+  - local linear explanations
+  - LIME
+  - SHAP
+  - evaluation metrics
+authors:
+  - family-names: Sevillano-García
+    given-names: Iván
+    orcid: "https://orcid.org/0000-0002-5029-9106"
+    affiliation: "Andalusian Research Institute in Data Science and Computational Intelligence (DaSCI), University of Granada, Spain"
+  - family-names: Luengo
+    given-names: Julián
+    affiliation: "Andalusian Research Institute in Data Science and Computational Intelligence (DaSCI), University of Granada, Spain"
+  - family-names: Herrera
+    given-names: Francisco
+    affiliation: "Andalusian Research Institute in Data Science and Computational Intelligence (DaSCI), University of Granada, Spain"
+preferred-citation:
+  type: article
+  title: "REVEL Framework to Measure Local Linear Explanations for Black-Box Models: Deep Learning Image Classification Case Study"
+  authors:
+    - family-names: Sevillano-García
+      given-names: Iván
+      orcid: "https://orcid.org/0000-0002-5029-9106"
+    - family-names: Luengo
+      given-names: Julián
+    - family-names: Herrera
+      given-names: Francisco
+  journal: "International Journal of Intelligent Systems"
+  volume: 2023
+  year: 2023
+  doi: "10.1155/2023/8068569"
