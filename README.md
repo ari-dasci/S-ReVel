@@ -89,6 +89,17 @@ A complete end-to-end run — EfficientNet classifier, CIFAR-10 and ImageNet-200
 segmentation, perturbation and plots — is in
 [`docs/source/notebooks/HowToMeasureAnExplanation.ipynb`](docs/source/notebooks/HowToMeasureAnExplanation.ipynb).
 
+For a script you can run in one command, with no dataset and no download, see
+[`examples/quickstart.py`](examples/quickstart.py):
+
+```bash
+python examples/quickstart.py
+```
+
+It builds a small CNN with random weights, explains a random image with LIME and prints
+the five metrics, so you can see the input/output contract of every piece before wiring in
+your own model.
+
 ## Documentation
 
 Full API documentation, including the tutorial notebooks, is at
